@@ -66,7 +66,7 @@ namespace EmployeeManagement.Database.Controllers
         }
 
         // DELETE: api/Employee/5
-        public bool Delete(int id)
+        public string Delete(int id)
         {
             return _dah.DeleteEmployeeInfo(id);
         }

@@ -90,16 +90,28 @@ namespace EmployeeManagement.Database.Models.DataLogic
                 return true;
             }
         }
-        public bool DeleteEmployeeInfo(int employeeId)
+        public string DeleteEmployeeInfo(int employeeId)
         {
-            using (EmployeeManagementEntities db = new EmployeeManagementEntities())
+            try
             {
-                Employee employee = db.Employees.FirstOrDefault(e => e.employee_Id == employeeId);
-
-                db.Employees.Remove(employee);
-                db.SaveChanges();
-                return true;
+                using (EmployeeManagementEntities db = new EmployeeManagementEntities())
+                {
+                    Employee deletedEmployee = db.Employees.FirstOrDefault(e => e.employee_Id == employeeId);
+                    if (deletedEmployee != null)
+                    {
+                        db.Employees.Remove(deletedEmployee);
+                        db.SaveChanges();
+                        return "Employee has been deleted.";
+                    }
+                    return "Nothing Deleted";
+                }
             }
+            catch (Exception ex)
+            {
+
+                return ex.Message;
+            }
+            
         }
         public bool UpdateEmployeeInfo(Employee employee)
         {
