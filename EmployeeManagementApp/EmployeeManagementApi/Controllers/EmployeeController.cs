@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Database.Models.DataLogic;
 using EmployeeManagement.Database.Models.Model;
+using EmployeeManagementApi.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace EmployeeManagement.Database.Controllers
         public IEnumerable<string> Get()
         {
             return new string[] { "Hello World" };
+        }
+
+        [Route("api/employee/getall")]
+        public IEnumerable<EmployeeModel> GetAll()
+        {
+            return _dah.GetAllEmployees();
         }
 
         // GET: api/Employee/5

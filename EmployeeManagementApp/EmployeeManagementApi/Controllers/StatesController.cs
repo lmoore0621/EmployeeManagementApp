@@ -15,7 +15,7 @@ namespace EmployeeManagement.Database.Controllers
 
         // GET: api/States
         [Route("api/States/GetAll")]
-        public IEnumerable<USAState> GetAll()
+        public IEnumerable<States> GetAll()
         {
              return _dah.GetAllStates();
         }

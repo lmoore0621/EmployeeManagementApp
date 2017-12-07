@@ -176,12 +176,14 @@
     <Compile Include="Models\Model\Education.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model\EducationModel.cs" />
     <Compile Include="Models\Model\Employee.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model\EmployeeModel.cs" />
     <Compile Include="Models\Model\States.cs" />
     <Compile Include="NotFoundFilterAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

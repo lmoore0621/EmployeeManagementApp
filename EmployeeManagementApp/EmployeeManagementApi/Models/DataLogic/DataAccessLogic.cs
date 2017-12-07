@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Database.Models.Model;
+using EmployeeManagementApi.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,43 @@ namespace EmployeeManagement.Database.Models.DataLogic
                 return employee;
             }
         }
+
+        public List<EmployeeModel> GetAllEmployees()
+        {
+            using (EmployeeManagementEntities db = new EmployeeManagementEntities())
+            {
+                List<Employee> staff = db.Employees.ToList();
+                List<EmployeeModel> employees = new List<EmployeeModel>();
+                for (int i = 0; i < staff.Count; i++)
+                {
+                    EmployeeModel emp = new EmployeeModel()
+                    {
+                        employee_Id = staff[i].employee_Id,
+                        name = staff[i].name,
+                        mobile = staff[i].mobile,
+                        date_of_birth = staff[i].date_of_birth,
+                        gender = staff[i].gender,
+                        age = staff[i].age,
+                        email = staff[i].email,
+                        Education = new EducationModel()
+                        {
+                            education_Id = staff[i].Education.education_Id,
+                            Degree_Type = staff[i].Education.Degree_Type
+                        },
+                        USAState = new States()
+                        {
+                            usa_state_id = staff[i].USAState.usa_state_id,
+                            State = staff[i].USAState.State
+                        }
+                    };
+
+                    employees.Add(emp);
+                }
+
+                return employees;
+            }
+        }
+
         public bool AddEmployeeInfo(Employee employee)
         {
             using (EmployeeManagementEntities db = new EmployeeManagementEntities())
@@ -99,13 +137,24 @@ namespace EmployeeManagement.Database.Models.DataLogic
                 return education;
             }
         }
-        public List<Education> GetAllDegrees()
+        public List<EducationModel> GetAllDegrees()
         {
             using (EmployeeManagementEntities db = new EmployeeManagementEntities())
             {
+                List<EducationModel> e = new List<EducationModel>();
                 List<Education> degrees = db.Educations.ToList();
+                for (int i = 0; i < degrees.Count; i++)
+                {
+                    EducationModel em = new EducationModel()
+                    {
+                        education_Id = degrees[i].education_Id,
+                        Degree_Type = degrees[i].Degree_Type
+                    };
 
-                return degrees;
+                    e.Add(em);
+                }
+
+                return e;
             }
         }
         #endregion
@@ -126,15 +175,15 @@ namespace EmployeeManagement.Database.Models.DataLogic
             }
         }
 
-        public List<USAState> GetAllStates()
+        public List<States> GetAllStates()
         {
             using (EmployeeManagementEntities db = new EmployeeManagementEntities())
             {
-                List<USAState> newList = new List<USAState>();
+                List<States> newList = new List<States>();
                 List<USAState> states = db.USAStates.ToList();
                 for (int i = 0; i < states.Count; i++)
                 {
-                    USAState state = new USAState()
+                    States state = new States()
                     {
                         usa_state_id = states[i].usa_state_id,
                         State = states[i].State
@@ -142,7 +191,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
 
                     newList.Add(state);
                 }
-                return states;
+                return newList;
             }
         }
 

@@ -14,6 +14,7 @@ namespace EmployeeManagement.Database.Models.Model
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
+    [Serializable]
     public partial class USAState
     {
         public USAState()
