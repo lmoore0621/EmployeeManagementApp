@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmployeeManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="education_Id" />
+          </Key>
+          <Property Name="education_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Degree_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employee_Id" />
+          </Key>
+          <Property Name="employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mobile" Type="int" Nullable="false" />
+          <Property Name="date_of_birth" Type="date" Nullable="false" />
+          <Property Name="gender" Type="int" Nullable="false" />
+          <Property Name="age" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="education_Id" Type="int" Nullable="false" />
+          <Property Name="state_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USAStates">
+          <Key>
+            <PropertyRef Name="usa_state_id" />
+          </Key>
+          <Property Name="usa_state_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="education_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="education_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_USAStates">
+          <End Role="USAStates" Type="Self.USAStates" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USAStates">
+              <PropertyRef Name="usa_state_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="state_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeeManagementModelStoreContainer">
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USAStates" EntityType="Self.USAStates" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Education" Association="Self.FK_Employee_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_USAStates" Association="Self.FK_Employee_USAStates">
+            <End Role="USAStates" EntitySet="USAStates" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="education_Id" />
+          </Key>
+          <Property Name="education_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Degree_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Education" FromRole="Education" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employee_Id" />
+          </Key>
+          <Property Name="employee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile" Type="Int32" Nullable="false" />
+          <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gender" Type="Int32" Nullable="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="education_Id" Type="Int32" Nullable="false" />
+          <Property Name="state_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Education" Relationship="Self.FK_Employee_Education" FromRole="Employee" ToRole="Education" />
+          <NavigationProperty Name="USAState" Relationship="Self.FK_Employee_USAStates" FromRole="Employee" ToRole="USAStates" />
+        </EntityType>
+        <EntityType Name="USAState">
+          <Key>
+            <PropertyRef Name="usa_state_id" />
+          </Key>
+          <Property Name="usa_state_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_USAStates" FromRole="USAStates" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Employee_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="education_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="education_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_USAStates">
+          <End Role="USAStates" Type="Self.USAState" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USAStates">
+              <PropertyRef Name="usa_state_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="state_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeeManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Educations" EntityType="Self.Education" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="USAStates" EntityType="Self.USAState" />
+          <AssociationSet Name="FK_Employee_Education" Association="Self.FK_Employee_Education">
+            <End Role="Education" EntitySet="Educations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_USAStates" Association="Self.FK_Employee_USAStates">
+            <End Role="USAStates" EntitySet="USAStates" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeManagementModelStoreContainer" CdmEntityContainer="EmployeeManagementEntities">
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="education_Id" ColumnName="education_Id" />
+                <ScalarProperty Name="Degree_Type" ColumnName="Degree_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="employee_Id" ColumnName="employee_Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="education_Id" ColumnName="education_Id" />
+                <ScalarProperty Name="state_Id" ColumnName="state_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USAStates">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.USAState">
+              <MappingFragment StoreEntitySet="USAStates">
+                <ScalarProperty Name="usa_state_id" ColumnName="usa_state_id" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
