@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace EmployeeManagement.Client.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeeController : Controller
     {
+        // GET: Employee
         public ActionResult Index()
         {
             return View();
@@ -15,15 +16,6 @@ namespace EmployeeManagement.Client.Controllers
 
         public ActionResult Employee()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

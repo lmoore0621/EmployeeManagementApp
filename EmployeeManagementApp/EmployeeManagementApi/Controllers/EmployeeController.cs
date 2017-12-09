@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Database.Models.DataLogic;
 using EmployeeManagement.Database.Models.Model;
 using EmployeeManagementApi.Models.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,14 @@ namespace EmployeeManagement.Database.Controllers
         private DataAccessLogic _dah = new DataAccessLogic();
 
         // GET: api/Employee
+        [HttpGet]
+        [Route("api/employee")]
         public IEnumerable<string> Get()
         {
             return new string[] { "Hello World" };
         }
 
+        [HttpGet]
         [Route("api/employee/getall")]
         public IEnumerable<EmployeeModel> GetAll()
         {
@@ -27,6 +31,8 @@ namespace EmployeeManagement.Database.Controllers
         }
 
         // GET: api/Employee/5
+        [HttpGet]
+        [Route("api/employee/{id}")]
         [NotFoundFilter]
         public HttpResponseMessage Get(int id)
         {
@@ -35,6 +41,7 @@ namespace EmployeeManagement.Database.Controllers
 
         // POST: api/Employee
         [HttpPost]
+        [Route("api/employee")]
         public HttpResponseMessage Post([FromBody]Employee employee)
         {
             try
@@ -51,6 +58,8 @@ namespace EmployeeManagement.Database.Controllers
 
         // PUT: api/Employee/5
         [HttpPut]
+        [Route("api/employee/{id}")]
+        [NotFoundFilter]
         public HttpResponseMessage Put([FromBody]Employee employee)
         {
             try
@@ -66,6 +75,9 @@ namespace EmployeeManagement.Database.Controllers
         }
 
         // DELETE: api/Employee/5
+        [HttpDelete]
+        [Route("api/employee/{id}")]
+        [NotFoundFilter]
         public string Delete(int id)
         {
             return _dah.DeleteEmployeeInfo(id);

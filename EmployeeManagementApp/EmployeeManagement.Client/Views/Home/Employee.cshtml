@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Degree</th>
+            <th>State</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="employee in employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.date_of_birth }}</td>
+            <td>{{ employee.gender }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.Education.Degree_Type }}</td>
+            <td>{{ employee.USAState.State }}</td>
+            <td>
+                <button ng-click="deleteEmployeeById(employee.employee_Id)" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{{ hello }}
