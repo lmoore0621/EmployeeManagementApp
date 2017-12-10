@@ -19,6 +19,21 @@
             <th>State</th>
             <th>&nbsp;</th>
         </tr>
+        <tr>
+            <th><input ng-model="employee.name" class="form-control"/></th>
+            <th><input ng-model="employee.mobile" class="form-control" /></th>
+            <th><input ng-model="employee.date_of_birth" class="form-control" /></th>
+            <th><input ng-model="employee.gender" class="form-control" /></th>
+            <th><input ng-model="employee.age" class="form-control" /></th>
+            <th><input ng-model="employee.email" class="form-control" /></th>
+            <th><input ng-model="employee.Education.Degree_Type" class="form-control" /></th>
+            <th><input ng-model="employee.USAState.State" class="form-control" /></th>
+            <th>
+                <button ng-click="addEmployeeInfo()" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </th>
+        </tr>
     </thead>
 
     <tbody>
@@ -32,6 +47,9 @@
             <td>{{ employee.Education.Degree_Type }}</td>
             <td>{{ employee.USAState.State }}</td>
             <td>
+                <button ng-click="updateEmployee(employee)" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
                 <button ng-click="deleteEmployeeById(employee.employee_Id)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>

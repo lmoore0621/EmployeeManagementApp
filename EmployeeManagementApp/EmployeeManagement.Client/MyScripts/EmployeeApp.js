@@ -8,8 +8,7 @@ app.controller("EmployeeController", ['$scope', '$http', function myfunction($sc
                     .then(function (response) {
                         $scope.employees = response.data;
                     });
-            }
-   
+    };
 
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
@@ -21,7 +20,15 @@ app.controller("EmployeeController", ['$scope', '$http', function myfunction($sc
         //var index = $scope.employees.indexOf(employee);
         //alert(index);
         //$scope.employees.splice(index, 1);
-    }
+    };
+
+    $scope.addEmployeeInfo = function () {
+        alert($scope.employee.email);
+    };
+
+    $scope.updateEmployee = function (employee) {
+        $scope.employee = employee;
+    };
 
     getAllEmployees();
 }]);
