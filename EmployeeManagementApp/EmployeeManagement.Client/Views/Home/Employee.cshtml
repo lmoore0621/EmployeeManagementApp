@@ -1,10 +1,10 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Employees";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Employeed Data and input</p>
 
 <table class="table table-striped ">
     <thead>
@@ -22,7 +22,7 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="employee in employees">
+        <tr ng-repeat="employee in employees track by $index">
             <td>{{ employee.name }}</td>
             <td>{{ employee.mobile }}</td>
             <td>{{ employee.date_of_birth }}</td>
@@ -39,5 +39,3 @@
         </tr>
     </tbody>
 </table>
-
-{{ hello }}
