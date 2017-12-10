@@ -8,9 +8,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EmployeeManagement.Database.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class EmployeeController : ApiController
     {
         private DataAccessLogic _dah = new DataAccessLogic();

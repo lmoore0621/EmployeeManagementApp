@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Formatting;
+using System.Web.Cors;
 
 namespace EmployeeManagement.Database
 {
@@ -19,6 +20,9 @@ namespace EmployeeManagement.Database
                               StringComparison.InvariantCultureIgnoreCase,
                               true,
                               "application/json"));
+
+            //Enable Cross Origin
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
