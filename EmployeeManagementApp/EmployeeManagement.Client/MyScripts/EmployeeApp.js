@@ -23,12 +23,20 @@ app.controller("EmployeeController", ['$scope', '$http', function myfunction($sc
     };
 
     $scope.addEmployeeInfo = function () {
-        alert($scope.employee.email);
+        $http.post(baseUrl)
+            .then(function (response) {
+                $scope.employee = response.data;
+            });
+        //alert($scope.employee.email);
     };
 
-    $scope.updateEmployee = function (employee) {
+    $scope.selectEmployeeToUpdate = function (employee) {
         $scope.employee = employee;
     };
+
+    $scope.updateEmployeeInfo = function () {
+        alert($scope.employee.name + " has been updated");
+    }
 
     getAllEmployees();
 }]);
