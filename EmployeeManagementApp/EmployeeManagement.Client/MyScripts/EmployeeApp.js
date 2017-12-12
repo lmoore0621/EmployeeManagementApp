@@ -1,27 +1,8 @@
 ﻿var app = angular.module("EmployeeApp", ['myRoutes']);
 
-//app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-//    debugger;
-
-//    $routeProvider.when('/home',
-//        {
-//            templateUrl: 'Home/Employee',
-//            controller: 'EmployeeController'
-//        })
-//        .when('/',
-//            {
-//                redirectTo: '/home'
-//            })
-//        .otherwise(
-//        {
-//            redirectTo: '/'
-//        });
-
-//    $locationProvider.html5Mode({ enable: true, requireBase: false }).hashPrefix('!');
-//}]);
-
 app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
+    $scope.updating = false;
 
     function getAllEmployees() {
         return $http.get(baseUrl + 'getall')
@@ -40,7 +21,6 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
             .then(function (response) {
-                $scope.employees = response.data;
                 getAllEmployees();
             });
         //alert(employee);
@@ -58,11 +38,14 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
 
     $scope.selectEmployeeToUpdate = function (employee) {
         $scope.employee = angular.copy(employee);
+        $scope.updating = true;
     };
 
     $scope.updateEmployeeInfo = function () {
         $http.put(baseUrl + '/' + $scope.employee.employee_Id, $scope.employee)
             .then(function (response) {
+                $scope.employee = {};
+                $scope.updating = false;
                 getAllEmployees();
                 alert($scope.employee.name + " has been updated");
             });

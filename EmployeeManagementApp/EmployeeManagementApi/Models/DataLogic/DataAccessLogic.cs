@@ -47,7 +47,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                         mobile = staff[i].mobile,
                         date_of_birth = staff[i].date_of_birth,
                         gender = staff[i].gender,
-                        age = (DateTime.Now - staff[i].date_of_birth).Days/365,
+                        age = (DateTime.Now - staff[i].date_of_birth).Days / 365,
                         email = staff[i].email,
                         Education = new EducationModel()
                         {
@@ -58,7 +58,9 @@ namespace EmployeeManagement.Database.Models.DataLogic
                         {
                             usa_state_id = staff[i].USAState.usa_state_id,
                             State = staff[i].USAState.State
-                        }
+                        },
+                        state_Id = staff[i].USAState.usa_state_id,
+                        education_Id = staff[i].education_Id
                     };
 
                     employees.Add(emp);
