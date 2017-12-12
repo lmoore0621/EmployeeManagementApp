@@ -18,6 +18,13 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
             });
     };
 
+    function getAllDegrees() {
+        return $http.get('http://localhost:13108/api/educations/GetAll')
+            .then(function (response) {
+                $scope.educations = response.data;
+            });
+    };
+
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
             .then(function (response) {
@@ -44,13 +51,22 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
     $scope.updateEmployeeInfo = function () {
         $http.put(baseUrl + '/' + $scope.employee.employee_Id, $scope.employee)
             .then(function (response) {
+                alert($scope.employee.name + " has been updated");
                 $scope.employee = {};
                 $scope.updating = false;
                 getAllEmployees();
-                alert($scope.employee.name + " has been updated");
             });
     };
 
+    getAllDegrees()
     getAllStates();
     getAllEmployees();
 }]);
+
+//$("input").on("change", function () {
+//    this.setAttribute(
+//        "data-date",
+//        moment(this.value, "YYYY-MM-DD")
+//        .format(this.getAttribute("data-date-format"))
+//    )
+//}).trigger("change")

@@ -23,7 +23,7 @@
             <tr>
                 <th><input ng-model="employee.name" class="form-control" /></th>
                 <th><input ng-model="employee.mobile" class="form-control" /></th>
-                <th><input ng-model="employee.date_of_birth" class="form-control" /></th>
+                <th><input ng-model="employee.date_of_birth" class="form-control" type="date" data-date-format="YYYY MM DD" value="2015-08-09" /></th>
                 <th class="form-group">
                         <select ng-model="employee.gender" class="form-control">
                             <option>Choose</option>
@@ -33,7 +33,12 @@
                     </th>
                 <th><input type="number" min="18" max="100" ng-model="employee.age" class="form-control" disabled /></th>
                 <th><input type="email" ng-model="employee.email" class="form-control" /></th>
-                <th><input ng-model="employee.education_Id" class="form-control" /></th>
+                <th class="form-group">
+                    <select class="form-control" ng-model="employee.education_Id">
+                        <option>Choose</option>
+                        <option ng-repeat="degree in educations" ng-value="{{ degree.education_Id }}">{{ degree.Degree_Type }}</option>
+                    </select>
+                </th>
                 <th>
                     <select class="form-control" ng-model="employee.state_Id">
                         <option>Choose</option>
@@ -74,3 +79,4 @@
     </table>
 
 </form>
+@*<input ng-model="employee.education_Id" class="form-control" />*@

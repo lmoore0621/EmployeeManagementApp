@@ -164,9 +164,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="MyScripts\EmployeeApp.js" />
-    <Content Include="MyScripts\EmployeeController.js" />
     <Content Include="MyScripts\Module.js" />
-    <Content Include="MyScripts\Services.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
