@@ -47,7 +47,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                         mobile = staff[i].mobile,
                         date_of_birth = staff[i].date_of_birth,
                         gender = staff[i].gender,
-                        age = staff[i].age,
+                        age = (DateTime.Now - staff[i].date_of_birth).Days/365,
                         email = staff[i].email,
                         Education = new EducationModel()
                         {

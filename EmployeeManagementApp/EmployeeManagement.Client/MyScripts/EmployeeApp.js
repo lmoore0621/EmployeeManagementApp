@@ -1,6 +1,26 @@
-﻿var app = angular.module("EmployeeApp", []);
+﻿var app = angular.module("EmployeeApp", ['myRoutes']);
 
-app.controller("EmployeeController", ['$scope', '$http', function myfunction($scope, $http) {
+//app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+//    debugger;
+
+//    $routeProvider.when('/home',
+//        {
+//            templateUrl: 'Home/Employee',
+//            controller: 'EmployeeController'
+//        })
+//        .when('/',
+//            {
+//                redirectTo: '/home'
+//            })
+//        .otherwise(
+//        {
+//            redirectTo: '/'
+//        });
+
+//    $locationProvider.html5Mode({ enable: true, requireBase: false }).hashPrefix('!');
+//}]);
+
+app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
 
     function getAllEmployees() {
@@ -10,11 +30,18 @@ app.controller("EmployeeController", ['$scope', '$http', function myfunction($sc
                     });
     };
 
+    function getAllStates() {
+        return $http.get('http://localhost:13108/api/States/GetAll')
+            .then(function (response) {
+                $scope.states = response.data;
+            });
+    };
+
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
             .then(function (response) {
                 $scope.employees = response.data;
-                $scope.Status = "Deleted Successfully";
+                getAllEmployees();
             });
         //alert(employee);
         //var index = $scope.employees.indexOf(employee);
@@ -23,20 +50,24 @@ app.controller("EmployeeController", ['$scope', '$http', function myfunction($sc
     };
 
     $scope.addEmployeeInfo = function () {
-        $http.post(baseUrl)
+        $http.post(baseUrl, $scope.employee)
             .then(function (response) {
-                $scope.employee = response.data;
+                getAllEmployees();
             });
-        //alert($scope.employee.email);
     };
 
     $scope.selectEmployeeToUpdate = function (employee) {
-        $scope.employee = employee;
+        $scope.employee = angular.copy(employee);
     };
 
     $scope.updateEmployeeInfo = function () {
-        alert($scope.employee.name + " has been updated");
-    }
+        $http.put(baseUrl + '/' + $scope.employee.employee_Id, $scope.employee)
+            .then(function (response) {
+                getAllEmployees();
+                alert($scope.employee.name + " has been updated");
+            });
+    };
 
+    getAllStates();
     getAllEmployees();
 }]);

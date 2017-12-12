@@ -6,64 +6,71 @@
 
 <p>Employeed Data and input</p>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Mobile</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Degree</th>
-            <th>State</th>
-            <th>&nbsp;&nbsp;</th>
-        </tr>
-        <tr>
-            <th><input ng-model="employee.name" class="form-control"/></th>
-            <th><input ng-model="employee.mobile" class="form-control" /></th>
-            <th><input ng-model="employee.date_of_birth" class="form-control" /></th>
-            <th><input ng-model="employee.gender" class="form-control" /></th>
-            @*<th ng-model="employee.gender" class="form-group">
-                <select class="form-control">
-                    <option>Choose</option>
-                    <option value="0">Female</option>
-                    <option value="1">Male</option>
-                </select>
-            </th>*@
-            <th><input type="number" min="18" max="100" ng-model="employee.age" class="form-control" /></th>
-            <th><input type="email" ng-model="employee.email" class="form-control" /></th>
-            <th><input ng-model="employee.education_Id" class="form-control" /></th>
-            <th><input ng-model="employee.state_Id" class="form-control" /></th>
-            <th style="display: inline-flex">
-                <button ng-click="updateEmployeeInfo()" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </button>
-                <button ng-click="addEmployeeInfo()" class="btn btn-success">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </th>
-        </tr>
-    </thead>
+<form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Degree</th>
+                <th>State</th>
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+            <tr>
+                <th><input ng-model="employee.name" class="form-control" /></th>
+                <th><input ng-model="employee.mobile" class="form-control" /></th>
+                <th><input type="date" ng-model="employee.date_of_birth" class="form-control" /></th>
+                <th class="form-group">
+                        <select ng-model="employee.gender" class="form-control">
+                            <option>Choose</option>
+                            <option ng-value="0">Female</option>
+                            <option ng-value="1">Male</option>
+                        </select>
+                    </th>
+                <th><input type="number" min="18" max="100" ng-model="employee.age" class="form-control" disabled /></th>
+                <th><input type="email" ng-model="employee.email" class="form-control" /></th>
+                <th><input ng-model="employee.education_Id" class="form-control" /></th>
+                <th>
+                    <select class="form-control" ng-model="employee.USAState.usa_state_id">
+                        <option>Choose</option>
+                        <option ng-repeat="state in states" ng-value="{{state.usa_state_id}}">{{ state.State }}</option>
+                    </select>
+                </th>
+                <th style="display: inline-flex">
+                    <button ng-click="updateEmployeeInfo()" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <button ng-click="addEmployeeInfo()" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <tr ng-repeat="employee in employees track by $index">
-            <td>{{ employee.name }}</td>
-            <td>{{ employee.mobile }}</td>
-            <td>{{ employee.date_of_birth }}</td>
-            <td>{{ employee.gender === 0 ? "Female" : "Male" }}</td>
-            <td>{{ employee.age }}</td>
-            <td>{{ employee.email }}</td>
-            <td>{{ employee.Education.Degree_Type }}</td>
-            <td>{{ employee.USAState.State }}</td>
-            <td style="display: inline-flex">
-                <button ng-click="selectEmployeeToUpdate(employee)" class="btn btn-warning">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-                <button ng-click="deleteEmployeeById(employee.employee_Id)" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <tbody>
+            <tr ng-repeat="employee in employees track by $index">
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.mobile }}</td>
+                <td>{{ employee.date_of_birth }}</td>
+                <td>{{ employee.gender === 0 ? "Female" : "Male" }}</td>
+                <td>{{ employee.age }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.Education.Degree_Type }}</td>
+                <td>{{ employee.USAState.State }}</td>
+                <td style="display: inline-flex">
+                    <button ng-click="selectEmployeeToUpdate(employee)" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button ng-click="deleteEmployeeById(employee.employee_Id)" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</form>

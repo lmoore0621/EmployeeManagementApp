@@ -14,10 +14,22 @@ namespace EmployeeManagement.Client
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "employees",
+                url: "employees/{*.}",
+                defaults: new { controller = "Home", action = "Employee", }
             );
+
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{*url}",
+            //    defaults: new { controller = "Home", action = "Index", }
+            //);
+
+            routes.MapRoute(
+              name: "Default",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          );
         }
     }
 }
