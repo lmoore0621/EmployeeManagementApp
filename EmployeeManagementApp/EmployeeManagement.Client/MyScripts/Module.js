@@ -1,11 +1,6 @@
 ﻿var routes = angular.module("myRoutes", ["ngRoute"]);
 
-//app.factory("SharedData", function () {
-//    return { value: 1};
-//});
-
 routes.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    debugger;
 
     $routeProvider.when('/employees',
         {
@@ -22,7 +17,8 @@ routes.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
             })
         .when('/employees/search',
             {
-                templateUrl: 'home/search'
+                templateUrl: 'home/search',
+                controller: 'EmployeeController'
             })
         .otherwise(
         {

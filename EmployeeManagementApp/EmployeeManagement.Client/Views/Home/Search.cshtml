@@ -1,4 +1,46 @@
-﻿
-<h1>Search Employee</h1>
+﻿<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<hr />
 
-<p>Please search for an employee.</p>
+<div>
+    @*<select>
+        <option ng-model="searchByName">Name</option>
+        <option ng-model="searchByMobile"> Mobile</option>
+        <option ng-model="searchByGender">Gender</option>
+        <option ng-model="searchByEmail">Email</option>
+        <option ng-model="searchByState">State</option>
+    </select>*@
+    <strong>Search By Name</strong> <input class="form-control" type="text" ng-model="searchByName" /> {{searchByName}}
+    <strong>Search By Mobile</strong> <input class="form-control" type="text" ng-model="searchByMobile" /> {{searchByMobile}}
+    <strong>Search By Gender</strong> <input class="form-control" type="text" ng-model="searchByGender" /> {{searchByGender}}
+    <strong>Search By Email</strong> <input class="form-control" type="text" ng-model="searchByEmail" /> {{searchByEmail}}
+    <strong>Search By State</strong> <input class="form-control" type="text" ng-model="searchByState" /> {{searchByState}}
+</div>
+
+<table class="table table-striped table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Degree</th>
+            <th>State</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="employee in employees | filter: { name:searchByName, mobile:searchByMobile, gender:searchByGender, email:searchByEmail, USAState:{State:searchByState} } track by $index ">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.date_of_birth }}</td>
+            <td>{{ employee.gender === 0 ? "Female" : "Male" }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.Education.Degree_Type }}</td>
+            <td>{{ employee.USAState.State }}</td>
+        </tr>
+    </tbody>
+</table>

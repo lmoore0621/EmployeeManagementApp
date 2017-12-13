@@ -20,17 +20,16 @@ namespace EmployeeManagement.Client.Controllers
 
         public ActionResult Search()
         {
+            ViewBag.Title = "Search";
+            ViewBag.Message = "Please search for an employee.";
+
             return PartialView();
         }
 
-        //public ActionResult Employee()
-        //{
-        //    return PartialView("Employee");
-        //}
-
         public ActionResult Employee()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Title = "Employee";
+            ViewBag.Message = "Add Employee Information Application page";
 
             return PartialView();
         }
