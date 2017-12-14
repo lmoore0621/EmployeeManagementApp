@@ -1,6 +1,16 @@
-﻿var app = angular.module("EmployeeApp", ['myRoutes']);
+﻿var app = angular.module("EmployeeApp", ['myRoutes', "ui.bootstrap"]);
 
-app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http) {
+app.filter('beginning_data', function () {
+    return function (input, begin) {
+        if (input) {
+            begin = +begin;
+            return input.slice(begin);
+        }
+        return [];
+    }
+});
+
+app.controller("EmployeeController", ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
     $scope.updating = false;
 
@@ -8,7 +18,25 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
         return $http.get(baseUrl + 'getall')
                     .then(function (response) {
                         $scope.employees = response.data;
+                        $scope.file = response.data;
+                        $scope.current_grid = 1;
+                        $scope.data_limit = 10;
+                        $scope.filter_data = $scope.employees.length;
+                        $scope.entire_user = $scope.employees.length;
                     });
+    };
+
+    $scope.page_position = function(page_number) {
+        $scope.current_grid = page_number;
+    };
+    $scope.filter = function() {
+        $timeout(function() {
+            $scope.filter_data = $scope.employees.length;
+        }, 20);
+    };
+    $scope.sort_with = function (base) {
+        $scope.base = base;
+        $scope.reverse = !$scope.reverse;
     };
 
     function getAllStates() {
@@ -39,6 +67,8 @@ app.controller("EmployeeController", ['$scope', '$http', function ($scope, $http
     $scope.addEmployeeInfo = function () {
         $http.post(baseUrl, $scope.employee)
             .then(function (response) {
+                alert($scope.employee.name + " has been added");
+                $scope.employee = {};
                 getAllEmployees();
             });
     };

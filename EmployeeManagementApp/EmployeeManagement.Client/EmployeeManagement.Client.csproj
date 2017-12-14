@@ -165,6 +165,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="MyScripts\EmployeeApp.js" />
     <Content Include="MyScripts\Module.js" />
+    <Content Include="MyScripts\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />

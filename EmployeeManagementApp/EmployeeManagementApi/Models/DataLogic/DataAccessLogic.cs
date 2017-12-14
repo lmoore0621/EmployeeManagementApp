@@ -45,9 +45,9 @@ namespace EmployeeManagement.Database.Models.DataLogic
                         employee_Id = staff[i].employee_Id,
                         name = staff[i].name,
                         mobile = staff[i].mobile,
-                        date_of_birth = staff[i].date_of_birth,
+                        date_of_birth = staff[i].date_of_birth.Date,
                         gender = staff[i].gender,
-                        age = (DateTime.Now - staff[i].date_of_birth).Days / 365,
+                        age = (DateTime.Now - staff[i].date_of_birth.Date).Days / 365,
                         email = staff[i].email,
                         Education = new EducationModel()
                         {
