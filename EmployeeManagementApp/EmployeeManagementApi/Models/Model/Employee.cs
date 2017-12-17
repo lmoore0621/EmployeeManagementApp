@@ -7,26 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmployeeManagement.Database.Models.Model
+namespace EmployeeManagementApi.Models.Model
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-
-    [JsonObject]
+    
     public partial class Employee
     {
         public int employee_Id { get; set; }
         public string name { get; set; }
         public int mobile { get; set; }
         public System.DateTime date_of_birth { get; set; }
-        public int gender { get; set; }
         public Nullable<int> age { get; set; }
         public string email { get; set; }
         public int education_Id { get; set; }
         public int state_Id { get; set; }
+        public int gender_id { get; set; }
     
         public virtual Education Education { get; set; }
         public virtual USAState USAState { get; set; }
+        public virtual Gender Gender { get; set; }
     }
 }

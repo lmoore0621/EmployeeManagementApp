@@ -7,9 +7,11 @@
       <Diagram DiagramId="3bc5c64b2cca4a73baa58e2e75f81024" Name="Diagram1">
         <EntityTypeShape EntityType="EmployeeManagementModel.Education" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmployeeManagementModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmployeeManagementModel.USAState" Width="1.5" PointX="5.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeManagementModel.USAState" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="EmployeeManagementModel.FK_Employee_Education" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeManagementModel.FK_Employee_USAStates" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeeManagementModel.Gender" Width="1.5" PointX="5.125" PointY="2.625" />
+        <AssociationConnector Association="EmployeeManagementModel.FK_Employee_Gender" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

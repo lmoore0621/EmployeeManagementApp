@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmployeeManagement.Database.Models.Model
+namespace EmployeeManagementApi.Models.Model
 {
     using System;
     using System.Collections.Generic;

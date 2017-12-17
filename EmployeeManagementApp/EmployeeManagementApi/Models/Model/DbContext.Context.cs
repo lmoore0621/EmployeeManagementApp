@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmployeeManagement.Database.Models.Model
+namespace EmployeeManagementApi.Models.Model
 {
     using System;
     using System.Data.Entity;
@@ -28,5 +28,6 @@ namespace EmployeeManagement.Database.Models.Model
         public virtual DbSet<Education> Educations { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<USAState> USAStates { get; set; }
+        public virtual DbSet<Gender> Genders { get; set; }
     }
 }

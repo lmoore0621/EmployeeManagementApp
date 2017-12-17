@@ -7,7 +7,7 @@ using System.Web;
 
 namespace EmployeeManagement.Database.Models.DataLogic
 {
-    public class DataAccessLogic
+    public class DataAccessLogic : IDataAccessLogic
     {
         #region Employee Data Logic
         public Employee GetEmployee(int employeeId)
@@ -21,7 +21,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                     name = emp.name,
                     mobile = emp.mobile,
                     date_of_birth = emp.date_of_birth,
-                    gender = emp.gender,
+                    gender_id = emp.gender_id,
                     age = emp.age,
                     email = emp.email,
                     education_Id = emp.education_Id,
@@ -46,7 +46,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                         name = staff[i].name,
                         mobile = staff[i].mobile,
                         date_of_birth = staff[i].date_of_birth.Date,
-                        gender = staff[i].gender,
+                        gender_id = staff[i].gender_id,
                         age = (DateTime.Now - staff[i].date_of_birth.Date).Days / 365,
                         email = staff[i].email,
                         Education = new EducationModel()
@@ -80,7 +80,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                     name = employee.name,
                     mobile = employee.mobile,
                     date_of_birth = employee.date_of_birth,
-                    gender = employee.gender,
+                    gender_id = employee.gender_id,
                     age = employee.age,
                     email = employee.email,
                     education_Id = employee.education_Id,
@@ -123,7 +123,7 @@ namespace EmployeeManagement.Database.Models.DataLogic
                 e.name = employee.name;
                 e.mobile = employee.mobile;
                 e.date_of_birth = employee.date_of_birth;
-                e.gender = employee.gender;
+                e.gender_id = employee.gender_id;
                 e.age = employee.age;
                 e.email = employee.email;
                 e.education_Id = employee.education_Id;
@@ -209,6 +209,23 @@ namespace EmployeeManagement.Database.Models.DataLogic
             }
         }
 
+        #endregion
+
+        #region Gender
+        public IEnumerable<GenderModel> getAllGenders()
+        {
+            using (EmployeeManagementEntities db = new EmployeeManagementEntities())
+            {
+                List<Gender> genders = db.Genders.ToList();
+                List<GenderModel> g = new List<GenderModel>();
+                foreach (var gender in genders)
+                {
+                    g.Add(new GenderModel() { gender_id = gender.gender_id , name = gender.name});
+                }
+
+                return g;
+            }
+        }
         #endregion
     }
 }

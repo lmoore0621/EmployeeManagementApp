@@ -34,11 +34,11 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="employee in employees = (file | filter: { name:searchByName, mobile:searchByMobile, gender:searchByGender, email:searchByEmail, USAState:{State:searchByState}} | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit">
+        <tr ng-repeat="employee in employees = (file | filter: { name:searchByName, mobile:searchByMobile, gender_id:searchByGender, email:searchByEmail, USAState:{State:searchByState}} | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit">
             <td>{{ employee.name }}</td>
             <td>{{ employee.mobile }}</td>
             <td>{{ employee.date_of_birth }}</td>
-            <td>{{ employee.gender === 0 ? "Female" : "Male" }}</td>
+            <td>{{ employee.gender_id === 2 ? "Female" : "Male" }}</td>
             <td>{{ employee.age }}</td>
             <td>{{ employee.email }}</td>
             <td>{{ employee.Education.Degree_Type }}</td>

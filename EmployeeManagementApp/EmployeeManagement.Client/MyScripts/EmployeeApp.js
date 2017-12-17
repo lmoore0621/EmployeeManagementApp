@@ -53,6 +53,13 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', function ($
             });
     };
 
+    function getAllGenders() {
+        return $http.get('http://localhost:13108/api/gender/GetAll')
+            .then(function (response) {
+                $scope.genders = response.data;
+            });
+    };
+
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
             .then(function (response) {
@@ -88,7 +95,8 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', function ($
             });
     };
 
-    getAllDegrees()
+    getAllGenders();
+    getAllDegrees();
     getAllStates();
     getAllEmployees();
 }]);

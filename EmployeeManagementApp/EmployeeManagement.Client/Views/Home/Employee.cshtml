@@ -1,4 +1,9 @@
-﻿
+﻿@*<md-input-container>
+    <label>Description</label>
+    <input name="Description" type="text"/>
+</md-input-container>*@
+
+
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
@@ -33,10 +38,9 @@
                 <th><input ng-model="employee.mobile" class="form-control" /></th>
                 <th><input ng-model="employee.date_of_birth" class="form-control" type="date" data-date-format="YYYY MM DD" value="2015-08-09" /></th>
                 <th class="form-group">
-                        <select ng-model="employee.gender" class="form-control">
+                        <select ng-model="employee.gender_id" class="form-control">
                             <option>Choose</option>
-                            <option ng-value="0">Female</option>
-                            <option ng-value="1">Male</option>
+                            <option ng-repeat="gender in genders" ng-value="{{gender.gender_id}}">{{gender.name}}</option>
                         </select>
                     </th>
                 <th><input type="number" min="18" max="100" ng-model="employee.age" class="form-control" disabled /></th>
@@ -69,7 +73,7 @@
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.mobile }}</td>
                 <td>{{ employee.date_of_birth }}</td>
-                <td>{{ employee.gender === 0 ? "Female" : "Male" }}</td>
+                <td>{{ employee.gender_id === 2 ? "Female" : "Male" }}</td>
                 <td>{{ employee.age }}</td>
                 <td>{{ employee.email }}</td>
                 <td>{{ employee.Education.Degree_Type }}</td>

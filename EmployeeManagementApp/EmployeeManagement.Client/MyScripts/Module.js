@@ -1,4 +1,4 @@
-﻿var routes = angular.module("myRoutes", ["ngRoute"]);
+﻿var routes = angular.module("myRoutes", ["ngRoute", 'ngMaterial', 'ngMessages']);
 
 routes.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 

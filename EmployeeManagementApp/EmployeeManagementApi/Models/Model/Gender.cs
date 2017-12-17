@@ -12,16 +12,16 @@ namespace EmployeeManagementApi.Models.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class USAState
+    public partial class Gender
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USAState()
+        public Gender()
         {
             this.Employees = new HashSet<Employee>();
         }
     
-        public int usa_state_id { get; set; }
-        public string State { get; set; }
+        public int gender_id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

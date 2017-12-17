@@ -9,7 +9,7 @@ namespace EmployeeManagementApi.Models.Model
         public string name { get; set; }
         public int mobile { get; set; }
         public DateTime date_of_birth { get; set; }
-        public int gender { get; set; }
+        public int gender_id { get; set; }
         public Nullable<int> age { get; set; }
         public string email { get; set; }
         public int education_Id { get; set; }

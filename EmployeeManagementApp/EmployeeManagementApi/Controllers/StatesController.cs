@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Database.Models.DataLogic;
 using EmployeeManagement.Database.Models.Model;
+using EmployeeManagementApi.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
