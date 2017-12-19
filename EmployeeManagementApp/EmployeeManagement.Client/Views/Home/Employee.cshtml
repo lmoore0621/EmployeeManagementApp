@@ -23,12 +23,11 @@
             <md-radio-group layout="row" class="md-block" id="genderTag" ng-model="employee.gender_id" flex-gt-sm>
                 <label id="genderlabel">Gender:</label>
                 <md-radio-button ng-repeat="gender in genders" ng-value="{{gender.gender_id}}">{{gender.name}}</md-radio-button>
-                @*<md-radio-button value="2">Female</md-radio-button>*@
             </md-radio-group>
 
             <md-slider-container class="md-block" id="sliderTag" flex-gt-sm ng-disabled="true">
                 <label id="labelSliderTag">Age:</label>
-                <md-slider flex ng-model="employee.age" min="18" max="100" aria-label="regular slider" ng-disabled></md-slider> {{employee.age}}
+                <md-slider flex ng-model="employee.age" min="18" max="100" aria-label="regular slider"></md-slider> {{employee.age}}
             </md-slider-container>
 
             <md-input-container class="md-block" id="emailInputTag">
@@ -38,7 +37,6 @@
         </div>
 
         <div layout="row" class="rowlayout, centerButtonForm">
-
             <md-input-container>
                 <md-select class="marginRight" ng-model="employee.education_Id" placeholder="Choose Degree">
                     <md-option ng-repeat="degree in educations" ng-value="{{ degree.education_Id }}"> {{ degree.Degree_Type }} </md-option>
@@ -64,8 +62,6 @@
                 </md-button>
             </div>
         </div>
-
-        
     </div>
 </ng-form>
 
