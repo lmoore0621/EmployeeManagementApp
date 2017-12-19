@@ -10,7 +10,7 @@ app.filter('beginning_data', function () {
     }
 });
 
-app.controller("EmployeeController", ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', function ($scope, $http, $timeout, $window) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
     $scope.updating = false;
 
@@ -83,6 +83,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', function ($
     $scope.selectEmployeeToUpdate = function (employee) {
         $scope.employee = angular.copy(employee);
         $scope.updating = true;
+        $window.scrollTo(0, 0);
     };
 
     $scope.updateEmployeeInfo = function () {

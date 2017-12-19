@@ -5,41 +5,71 @@
         <div layout="row" class="rowlayout">
             <md-input-container class="md-block, empInputsPadding">
                 <label>Name:</label>
-                <input class="empInputsMargin" type="text" required />
+                <input class="empInputsMargin" type="text" ng-model="employee.name" required />
             </md-input-container>
 
             <md-input-container class="md-block, empInputsPadding">
                 <label>Mobile:</label>
-                <input class="empInputsMargin" type="tel" required />
+                <input class="empInputsMargin" type="tel" ng-model="employee.mobile" required />
             </md-input-container>
 
             <md-input-container class="md-block">
                 <label>DOB:</label>
-                <input class="empInputsMargin" type="date" required />
+                <input class="empInputsMargin" ng-model="employee.date_of_birth" type="date"  required />
             </md-input-container>
         </div>
 
         <div layout="row" class="rowlayout">
-            <md-radio-group layout="row" class="md-block" id="genderTag" flex-gt-sm>
+            <md-radio-group layout="row" class="md-block" id="genderTag" ng-model="employee.gender_id" flex-gt-sm>
                 <label id="genderlabel">Gender:</label>
-                <md-radio-button value="1">Male</md-radio-button>
-                <md-radio-button value="2">Female</md-radio-button>
+                <md-radio-button ng-repeat="gender in genders" ng-value="{{gender.gender_id}}">{{gender.name}}</md-radio-button>
+                @*<md-radio-button value="2">Female</md-radio-button>*@
             </md-radio-group>
 
-            <md-slider-container class="md-block" id="sliderTag" flex-gt-sm>
+            <md-slider-container class="md-block" id="sliderTag" flex-gt-sm ng-disabled="true">
                 <label id="labelSliderTag">Age:</label>
-                <md-slider flex ng-model="SliderAge" min="18" max="100" aria-label="regular slider"></md-slider> {{SliderAge}}
+                <md-slider flex ng-model="employee.age" min="18" max="100" aria-label="regular slider" ng-disabled></md-slider> {{employee.age}}
             </md-slider-container>
 
             <md-input-container class="md-block" id="emailInputTag">
                 <label>Email</label>
-                <input type="email" id="emailInput" required />
+                <input type="email" id="emailInput" ng-model="employee.email" required />
             </md-input-container>
         </div>
+
+        <div layout="row" class="rowlayout, centerButtonForm">
+
+            <md-input-container>
+                <md-select class="marginRight" ng-model="employee.education_Id" placeholder="Choose Degree">
+                    <md-option ng-repeat="degree in educations" ng-value="{{ degree.education_Id }}"> {{ degree.Degree_Type }} </md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>State</label>
+                <md-select class="marginRight" ng-model="employee.state_Id">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="state in states" ng-value="{{state.usa_state_id}}">
+                        {{ state.State }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <div align="center">
+                <md-button class="md-raised md-warn" aria-label="Use Android" ng-click="updateEmployeeInfo()" ng-show="updating">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </md-button>
+                <md-button class="md-fab md-primary" ng-click="addEmployeeInfo()" ng-hide="updating">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </md-button>
+            </div>
+        </div>
+
+        
     </div>
 </ng-form>
 
-@*<div class="col-sm-2 pull-left">
+<div class="col-sm-2 pull-left">
     <label>Page Size:</label>
     <select ng-model="data_limit" class="form-control">
         <option>10</option>
@@ -63,7 +93,7 @@
                 <th>State</th>
                 <th>&nbsp;</th>
             </tr>
-            <tr>
+            @*<tr>
                 <th><input ng-model="employee.name" class="form-control" /></th>
                 <th><input ng-model="employee.mobile" class="form-control" /></th>
                 <th><input ng-model="employee.date_of_birth" class="form-control" type="date" data-date-format="YYYY MM DD" value="2015-08-09" /></th>
@@ -95,7 +125,7 @@
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </th>
-            </tr>
+            </tr>*@
         </thead>
 
         <tbody>
@@ -133,5 +163,5 @@
     <div class="col-md-6" ng-show="filter_data > 0">
         <div pagination="" page="current_grid" on-select-page="page_position(page)" boundary-links="true" total-items="filter_data" items-per-page="data_limit" class="pagination-small pull-right" previous-text="&laquo;" next-text="&raquo;"></div>
     </div>
-</div>*@
+</div>
 @*<input ng-model="employee.education_Id" class="form-control" />*@

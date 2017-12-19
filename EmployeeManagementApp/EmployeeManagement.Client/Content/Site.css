@@ -62,3 +62,12 @@ textarea {
 #emailInput {
     margin-right: 11rem;
 }
+
+.marginRight {
+    margin-right: 5rem;
+}
+
+.centerButtonForm {
+    margin-left: 34rem;
+    padding-bottom: 5rem;
+}
