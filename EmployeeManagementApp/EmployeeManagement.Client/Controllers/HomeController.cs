@@ -28,7 +28,7 @@ namespace EmployeeManagement.Client.Controllers
 
         public ActionResult Employee()
         {
-            ViewBag.Title = "Employee";
+            ViewBag.Title = "Employee Management";
             ViewBag.Message = "Add Employee Information Application page";
 
             return PartialView();

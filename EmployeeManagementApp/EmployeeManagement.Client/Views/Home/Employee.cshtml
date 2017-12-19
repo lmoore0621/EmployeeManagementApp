@@ -1,15 +1,45 @@
-﻿@*<md-input-container>
-    <label>Description</label>
-    <input name="Description" type="text"/>
-</md-input-container>*@
+﻿<h2 align="center" class="empTitle"><em>@ViewBag.Title</em></h2>
 
+<ng-form name="employeeForm">
+    <div>
+        <div layout="row" class="rowlayout">
+            <md-input-container class="md-block, empInputsPadding">
+                <label>Name:</label>
+                <input class="empInputsMargin" type="text" required />
+            </md-input-container>
 
-<h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+            <md-input-container class="md-block, empInputsPadding">
+                <label>Mobile:</label>
+                <input class="empInputsMargin" type="tel" required />
+            </md-input-container>
 
-<p>Employee Data and input</p>
+            <md-input-container class="md-block">
+                <label>DOB:</label>
+                <input class="empInputsMargin" type="date" required />
+            </md-input-container>
+        </div>
 
-<div class="col-sm-2 pull-left">
+        <div layout="row" class="rowlayout">
+            <md-radio-group layout="row" class="md-block" id="genderTag" flex-gt-sm>
+                <label id="genderlabel">Gender:</label>
+                <md-radio-button value="1">Male</md-radio-button>
+                <md-radio-button value="2">Female</md-radio-button>
+            </md-radio-group>
+
+            <md-slider-container class="md-block" id="sliderTag" flex-gt-sm>
+                <label id="labelSliderTag">Age:</label>
+                <md-slider flex ng-model="SliderAge" min="18" max="100" aria-label="regular slider"></md-slider> {{SliderAge}}
+            </md-slider-container>
+
+            <md-input-container class="md-block" id="emailInputTag">
+                <label>Email</label>
+                <input type="email" id="emailInput" required />
+            </md-input-container>
+        </div>
+    </div>
+</ng-form>
+
+@*<div class="col-sm-2 pull-left">
     <label>Page Size:</label>
     <select ng-model="data_limit" class="form-control">
         <option>10</option>
@@ -103,5 +133,5 @@
     <div class="col-md-6" ng-show="filter_data > 0">
         <div pagination="" page="current_grid" on-select-page="page_position(page)" boundary-links="true" total-items="filter_data" items-per-page="data_limit" class="pagination-small pull-right" previous-text="&laquo;" next-text="&raquo;"></div>
     </div>
-</div>
+</div>*@
 @*<input ng-model="employee.education_Id" class="form-control" />*@

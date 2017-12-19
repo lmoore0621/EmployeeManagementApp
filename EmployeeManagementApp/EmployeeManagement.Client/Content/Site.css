@@ -22,3 +22,43 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.empTitle {
+    margin-bottom: 7rem;
+}
+
+.empInputsPadding {
+    padding-right: 15rem;
+}
+
+.empInputsMargin {
+    margin-right: 10rem;
+}
+
+.rowlayout {
+    padding-bottom: 5rem;
+}
+
+#genderlabel {
+    margin-right: 1rem;
+}
+
+#genderTag {
+    margin: 7rem 7rem 7rem 0rem;
+}
+
+#sliderTag {
+    padding: 0rem 15rem 0rem 0rem;
+}
+
+#labelSliderTag {
+    margin: 0rem 1rem 0rem 4rem;
+}
+
+#emailInputTag {
+    margin: 6rem 0rem 0rem 0rem;
+}
+
+#emailInput {
+    margin-right: 11rem;
+}
