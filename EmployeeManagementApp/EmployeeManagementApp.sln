@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.NUnitTes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Testing", "Unit Testing", "{4FAE9289-5C6D-4F76-9569-F72D186E5C9E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F4B3738A-7E13-4571-9F1E-256FA921E331}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseApi", "DatabaseApi", "{5E885F46-3CB1-4CCB-A7CD-4FB1851A557F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{FDA5E682-0B78-4FFC-BCDC-DA171B14B1AF} = {5E885F46-3CB1-4CCB-A7CD-4FB1851A557F}
+		{0268028C-B9D0-41BE-97EE-53358D1D42B0} = {F4B3738A-7E13-4571-9F1E-256FA921E331}
 		{29C59809-F469-4CB3-815A-450BD96371A8} = {4FAE9289-5C6D-4F76-9569-F72D186E5C9E}
 	EndGlobalSection
 EndGlobal
