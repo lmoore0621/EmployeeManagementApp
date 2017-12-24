@@ -63,6 +63,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     $scope.deleteEmployeeById = function (employee) {
         $http.delete(baseUrl + employee)
             .then(function (response) {
+                alert($scope.employee.name + " has been deleted");
                 getAllEmployees();
             });
         //alert(employee);

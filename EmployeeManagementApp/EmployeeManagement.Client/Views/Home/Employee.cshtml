@@ -13,10 +13,14 @@
                 <input class="empInputsMargin" type="tel" ng-model="employee.mobile" required />
             </md-input-container>
 
-            <md-input-container class="md-block">
+            @*<md-input-container class="md-block">
                 <label>DOB:</label>
-                <input class="empInputsMargin" ng-model="employee.date_of_birth" type="date"  required />
-            </md-input-container>
+                <input class="empInputsMargin" ng-model="employee.date_of_birth" type="date" ng-bind="date | date:'yyyy/MM/dd'" required />
+            </md-input-container>*@
+
+            <md-datepicker ng-model="employee.date_of_birth" class="empInputsMargin, dateInput" md-placeholder="Date Of Birth" required>
+                <label>Date Of Birth</label>
+            </md-datepicker>
         </div>
 
         <div layout="row" class="rowlayout">
@@ -54,10 +58,10 @@
             </md-input-container>
 
             <div align="center">
-                <md-button class="md-raised md-warn" aria-label="Use Android" ng-click="updateEmployeeInfo()" ng-show="updating">
+                <md-button class="md-raised md-warn" aria-label="Update Button" ng-click="updateEmployeeInfo()" ng-show="updating">
                     <span class="glyphicon glyphicon-ok"></span>
                 </md-button>
-                <md-button class="md-fab md-primary" ng-click="addEmployeeInfo()" ng-hide="updating">
+                <md-button class="md-fab md-primary" aria-label="Add Employee Info Button" ng-click="addEmployeeInfo()" ng-hide="updating">
                     <span class="glyphicon glyphicon-plus"></span>
                 </md-button>
             </div>
