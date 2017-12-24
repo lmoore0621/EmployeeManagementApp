@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Database
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Client", "EmployeeManagement.Client\EmployeeManagement.Client.csproj", "{0268028C-B9D0-41BE-97EE-53358D1D42B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.NUnitTests", "EmployeeManagement.NUnitTests\EmployeeManagement.NUnitTests.csproj", "{29C59809-F469-4CB3-815A-450BD96371A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Testing", "Unit Testing", "{4FAE9289-5C6D-4F76-9569-F72D186E5C9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{0268028C-B9D0-41BE-97EE-53358D1D42B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0268028C-B9D0-41BE-97EE-53358D1D42B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0268028C-B9D0-41BE-97EE-53358D1D42B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C59809-F469-4CB3-815A-450BD96371A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C59809-F469-4CB3-815A-450BD96371A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C59809-F469-4CB3-815A-450BD96371A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C59809-F469-4CB3-815A-450BD96371A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29C59809-F469-4CB3-815A-450BD96371A8} = {4FAE9289-5C6D-4F76-9569-F72D186E5C9E}
 	EndGlobalSection
 EndGlobal
