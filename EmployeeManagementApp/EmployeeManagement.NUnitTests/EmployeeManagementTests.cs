@@ -15,6 +15,9 @@ namespace EmployeeManagement.NUnitTests
         [Test]
         public void GetGenderCountTest()
         {
+            int expected = 1;
+            int expectedTwo = 2;
+
             //Get employees from Data Source
             IEnumerable<EmployeeModel> employees = GetEmployeesFromDataSource();
 
@@ -23,8 +26,8 @@ namespace EmployeeManagement.NUnitTests
             EmployeeGenderCount genderCount = service.GetEmployeeGenderCount(employees);
 
             //Test our case
-            Assert.AreEqual(1, genderCount.MaleCount);
-            Assert.AreEqual(2, genderCount.FemaleCount);
+            Assert.AreEqual(expected, genderCount.MaleCount);
+            Assert.AreEqual(expectedTwo, genderCount.FemaleCount);
         }
 
         #region Helper Methods
