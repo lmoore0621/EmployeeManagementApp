@@ -10,7 +10,8 @@ app.filter('beginning_data', function () {
     }
 });
 
-app.factory('employeeService', function($http) {
+app.factory('employeeService', function ($http) {
+    var baseUrl = 'http://localhost:13108/api/Employee/';
     var service = {};
 
     service.create = function (employee) {
@@ -175,7 +176,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         }
     }
 
-    ageAllGenders();
+    getAllGenders();
     getAllDegrees();
     getAllStates();
     getAllEmployees();
