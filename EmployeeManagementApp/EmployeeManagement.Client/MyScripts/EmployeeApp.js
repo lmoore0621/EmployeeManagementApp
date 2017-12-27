@@ -23,7 +23,7 @@ app.factory('employeeService', function ($http) {
     };
     
     service.update = function (employee) {
-        return $http.put(baseUrl + '/' + $scope.employee.employee_Id, $scope.employee);
+        return $http.put(baseUrl + '/' + employee.employee_Id, employee);
     };
 
     service.delete = function (id) {
