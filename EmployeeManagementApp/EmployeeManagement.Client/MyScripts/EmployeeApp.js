@@ -104,10 +104,10 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
             });
     };
 
-    $scope.deleteEmployeeById = function (employeeId) {
+    $scope.deleteEmployeeById = function (employeeId, name) {
         employeeService.delete(employeeId)
             .then(function (response) {
-                alert($scope.employee.name + " has been deleted");
+                alert(name + " has been deleted");
                 getAllEmployees();
             });
         //alert(employee);
