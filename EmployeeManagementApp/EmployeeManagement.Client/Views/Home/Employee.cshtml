@@ -47,7 +47,7 @@
                 </md-select>
             </md-input-container>
 
-            <md-input-container>
+            @*<md-input-container>
                 <label>State</label>
                 <md-select class="marginRight" ng-model="employee.state_Id">
                     <md-option><em>None</em></md-option>
@@ -55,16 +55,29 @@
                         {{ state.State }}
                     </md-option>
                 </md-select>
-            </md-input-container>
+            </md-input-container>*@
 
-            <div align="center">
-                <md-button class="md-raised md-warn" aria-label="Update Button" ng-click="updateEmployeeInfo()" ng-show="updating">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </md-button>
-                <md-button class="md-fab md-primary" aria-label="Add Employee Info Button" ng-click="addEmployeeInfo()" ng-hide="updating">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </md-button>
-            </div>
+            <md-autocomplete 
+                    md-selected-item="employee.USAState"
+                    md-search-text-change="searchTextChange(searchText)"
+                    md-search-text="searchText"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in states | filter: searchText"
+                    md-item-text="item.State"
+                    placeholder="Choose the state.">
+                <md-item-template>
+                    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.State}}</span>
+                </md-item-template>
+            </md-autocomplete>
+                
+                <div align="center">
+                    <md-button class="md-raised md-warn" aria-label="Update Button" ng-click="updateEmployeeInfo()" ng-show="updating">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </md-button>
+                    <md-button class="md-fab md-primary" aria-label="Add Employee Info Button" ng-click="addEmployeeInfo()" ng-hide="updating">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </md-button>
+                </div>
         </div>
     </div>
 </ng-form>
