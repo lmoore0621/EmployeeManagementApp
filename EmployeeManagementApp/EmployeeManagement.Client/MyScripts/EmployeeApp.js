@@ -131,15 +131,9 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         $scope.reverse = !$scope.reverse;
     };
 
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled = false;
-
     // list of `state` value/display objects
-    self.states = [];
     $scope.selectedItemChange = selectedItemChange;
-    self.searchTextChange = searchTextChange;
+    $scope.searchTextChange = searchTextChange;
 
     function searchTextChange(text) {
         $log.info('Text changed to ' + text);
