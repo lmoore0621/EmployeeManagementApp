@@ -64,6 +64,7 @@ app.controller("EmployeeController", ['$scope', '$timeout', '$window', '$log', '
 
     $scope.selectEmployeeToUpdate = function (employee) {
         $scope.employee = angular.copy(employee);
+        $scope.employee.date_of_birth = new Date($scope.employee.date_of_birth);
         $scope.updating = true;
         $window.scrollTo(0, 0);
     };
