@@ -156,13 +156,6 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         $scope.reverse = !$scope.reverse;
     };
 
-
-    
-
-    
-
-    
-
     var self = this;
 
     self.simulateQuery = false;
@@ -174,12 +167,6 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     $scope.selectedItemChange = selectedItemChange;
     self.searchTextChange = searchTextChange;
 
-    //self.newState = newState;
-
-    //function newState(state) {
-    //    alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    //}
-
     function searchTextChange(text) {
         $log.info('Text changed to ' + text);
     }
@@ -188,18 +175,6 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         if (item) {
             $scope.employee.state_Id = item.usa_state_id;
             $log.info('Item changed to ' + JSON.stringify(item));
-        }
-    }
-
-    function querySearch(query) {
-        var results = query ? self.states.filter(createFilterFor(query)) : self.states,
-            deferred;
-        if (self.simulateQuery) {
-            deferred = $q.defer();
-            $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-            return deferred.promise;
-        } else {
-            return results;
         }
     }
 
