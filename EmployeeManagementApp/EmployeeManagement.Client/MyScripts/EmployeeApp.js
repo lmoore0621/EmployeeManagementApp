@@ -10,32 +10,34 @@ app.filter('beginning_data', function () {
     }
 });
 
-app.factory('employeeService', function ($http) {
-    var baseUrl = 'http://localhost:13108/api/Employee/';
+app.constant('baseUrl', 'http://localhost:13108/api/');
+app.constant('employeeUrl', 'http://localhost:13108/api/Employee/');
+
+app.factory('employeeService', ['$http', 'employeeUrl', function ($http, employeeUrl) {
     var service = {};
 
     service.create = function (employee) {
-        return $http.post(baseUrl, employee);
+        return $http.post(employeeUrl, employee);
     };
 
     service.getAll = function () {
-        return $http.get(baseUrl + 'getall');
+        return $http.get(employeeUrl + 'getall');
     };
     
     service.update = function (employee) {
-        return $http.put(baseUrl + '/' + employee.employee_Id, employee);
+        return $http.put(employeeUrl + '/' + employee.employee_Id, employee);
     };
 
     service.delete = function (id) {
-        return $http.delete(baseUrl + id);
+        return $http.delete(employeeUrl + id);
     };
 
     service.get = function (id) {
-        return $http.get(baseUrl + id);
+        return $http.get(employeeUrl + id);
     };
 
     return service;
-});
+}]);
 
 app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', '$log', 'employeeService', function ($scope, $http, $timeout, $window, $log, employeeService) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
