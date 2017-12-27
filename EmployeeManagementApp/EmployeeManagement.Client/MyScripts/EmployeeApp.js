@@ -1,4 +1,4 @@
-﻿var app = angular.module("EmployeeApp", ['myRoutes', "ui.bootstrap"]);
+﻿var app = angular.module("EmployeeApp", ['myRoutes', "ui.bootstrap", 'coreModule']);
 
 app.filter('beginning_data', function () {
     return function (input, begin) {
@@ -9,31 +9,6 @@ app.filter('beginning_data', function () {
         return [];
     }
 });
-
-app.constant('employeeUrl', 'http://localhost:13108/api/employee/');
-app.constant('statesUrl', 'http://localhost:13108/api/states/');
-app.constant('genderUrl', 'http://localhost:13108/api/gender/');
-app.constant('degreeUrl', 'http://localhost:13108/api/educations/');
-
-app.factory('generalService', ['$http', 'statesUrl', 'genderUrl', 'degreeUrl', function ($http, statesUrl, genderUrl, degreeUrl) {
-
-    var service = {}
-
-    service.getStateOptions = function () {
-        return $http.get(statesUrl + 'GetAll');
-    };
-
-    service.getGenderOptions = function () {
-        return $http.get(genderUrl + 'GetAll')
-    }
-
-    service.getDegreeOptions = function () {
-        return $http.get(degreeUrl + 'GetAll')
-    }
-
-    return service;
-
-}]);
 
 app.factory('employeeService', ['$http', 'employeeUrl', function ($http, employeeUrl) {
     var service = {};
