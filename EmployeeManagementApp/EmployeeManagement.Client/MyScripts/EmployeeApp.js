@@ -84,10 +84,6 @@ app.controller("EmployeeController", ['$scope', '$timeout', '$window', '$log', '
                 alert(name + " has been deleted");
                 getAllEmployees();
             });
-        //alert(employee);
-        //var index = $scope.employees.indexOf(employee);
-        //alert(index);
-        //$scope.employees.splice(index, 1);
     };
 
     //#endregion
