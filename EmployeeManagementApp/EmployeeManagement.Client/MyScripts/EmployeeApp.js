@@ -132,19 +132,16 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     };
 
     // list of `state` value/display objects
-    $scope.selectedItemChange = selectedItemChange;
-    $scope.searchTextChange = searchTextChange;
-
-    function searchTextChange(text) {
-        $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
+    $scope.selectedItemChange = function(item) {
         if (item) {
             $scope.employee.state_Id = item.usa_state_id;
             $log.info('Item changed to ' + JSON.stringify(item));
         }
-    }
+    };
+
+    $scope.searchTextChange = function(text) {
+        $log.info('Text changed to ' + text);
+    };
 
     getAllGenders();
     getAllDegrees();
