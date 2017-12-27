@@ -121,7 +121,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     //#region General Service Operations
 
     function getAllStates() {
-        generalService.getStatesOptions()
+        generalService.getStateOptions()
             .then(function (response) {
                 $scope.states = response.data;
             });
@@ -135,7 +135,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     };
 
     function getAllGenders() {
-        generalService.getDegreeOptions()
+        generalService.getGenderOptions()
             .then(function (response) {
                 $scope.genders = response.data;
             });
@@ -162,7 +162,6 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     self.isDisabled = false;
 
     // list of `state` value/display objects
-    self.querySearch = querySearch;
     self.states = [];
     $scope.selectedItemChange = selectedItemChange;
     self.searchTextChange = searchTextChange;
