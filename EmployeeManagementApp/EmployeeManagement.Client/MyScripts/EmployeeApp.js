@@ -36,8 +36,7 @@ app.factory('employeeService', ['$http', 'employeeUrl', function ($http, employe
     return service;
 }]);
 
-app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', '$log', 'employeeService', 'generalService', function ($scope, $http, $timeout, $window, $log, employeeService, generalService) {
-    var baseUrl = 'http://localhost:13108/api/Employee/';
+app.controller("EmployeeController", ['$scope', '$timeout', '$window', '$log', 'employeeService', 'generalService', function ($scope, $timeout, $window, $log, employeeService, generalService) {
     $scope.updating = false;
 
     //#region Employee Service Operations
@@ -118,6 +117,7 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
 
     //#endregion
 
+    // #region Pagination
     $scope.page_position = function(page_number) {
         $scope.current_grid = page_number;
     };
@@ -130,8 +130,9 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         $scope.base = base;
         $scope.reverse = !$scope.reverse;
     };
+    // #endregion
 
-    // list of `state` value/display objects
+    // #region states auto completion event handlers
     $scope.selectedItemChange = function(item) {
         if (item) {
             $scope.employee.state_Id = item.usa_state_id;
@@ -142,9 +143,12 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
     $scope.searchTextChange = function(text) {
         $log.info('Text changed to ' + text);
     };
+    //#endregion
 
+    //#region Initializations
     getAllGenders();
     getAllDegrees();
     getAllStates();
     getAllEmployees();
+    //#endregion
 }]);
