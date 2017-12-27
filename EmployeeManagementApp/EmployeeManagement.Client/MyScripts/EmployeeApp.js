@@ -10,8 +10,30 @@ app.filter('beginning_data', function () {
     }
 });
 
-app.constant('baseUrl', 'http://localhost:13108/api/');
-app.constant('employeeUrl', 'http://localhost:13108/api/Employee/');
+app.constant('employeeUrl', 'http://localhost:13108/api/employee/');
+app.constant('statesUrl', 'http://localhost:13108/api/states/');
+app.constant('genderUrl', 'http://localhost:13108/api/gender/');
+app.constant('degreesUrl', 'http://localhost:13108/api/eductions/');
+
+app.factory('generalService', ['$http', 'statesUrl', 'genderUrl', 'degreeUrl', function ($http, statesUrl, genderUrl, degreeUrl) {
+
+    var service = {}
+
+    service.getStateOptions = function () {
+        return $http.get(statesUrl + 'GetAll');
+    };
+
+    service.getGenderOptions = function () {
+        return $http.get(genderUrl + 'GetAll')
+    }
+
+    service.getDegreeOptions = function () {
+        return $http.get(degreeUrl + 'GetAll')
+    }
+
+    return service;
+
+}]);
 
 app.factory('employeeService', ['$http', 'employeeUrl', function ($http, employeeUrl) {
     var service = {};
@@ -39,7 +61,7 @@ app.factory('employeeService', ['$http', 'employeeUrl', function ($http, employe
     return service;
 }]);
 
-app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', '$log', 'employeeService', function ($scope, $http, $timeout, $window, $log, employeeService) {
+app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', '$log', 'employeeService', 'generalService', function ($scope, $http, $timeout, $window, $log, employeeService, generalService) {
     var baseUrl = 'http://localhost:13108/api/Employee/';
     $scope.updating = false;
 
@@ -96,6 +118,31 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
 
     //#endregion
 
+    //#region General Service Operations
+
+    function getAllStates() {
+        generalService.getStatesOptions()
+            .then(function (response) {
+                $scope.states = response.data;
+            });
+    };
+
+    function getAllDegrees() {
+        generalService.getDegreeOptions()
+            .then(function (response) {
+                $scope.educations = response.data;
+            });
+    };
+
+    function getAllGenders() {
+        generalService.getDegreeOptions()
+            .then(function (response) {
+                $scope.genders = response.data;
+            });
+    };
+
+    //#endregion
+
     $scope.page_position = function(page_number) {
         $scope.current_grid = page_number;
     };
@@ -109,28 +156,6 @@ app.controller("EmployeeController", ['$scope', '$http', '$timeout', '$window', 
         $scope.reverse = !$scope.reverse;
     };
 
-    function getAllStates() {
-        return $http.get('http://localhost:13108/api/States/GetAll')
-            .then(function (response) {
-                $scope.states = response.data;
-            });
-    };
-
-    function getAllDegrees() {
-        return $http.get('http://localhost:13108/api/educations/GetAll')
-            .then(function (response) {
-                $scope.educations = response.data;
-            });
-    };
-
-    function getAllGenders() {
-        return $http.get('http://localhost:13108/api/gender/GetAll')
-            .then(function (response) {
-                $scope.genders = response.data;
-            });
-    };
-
-    
 
     
 
