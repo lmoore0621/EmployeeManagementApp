@@ -13,7 +13,7 @@ app.filter('beginning_data', function () {
 app.constant('employeeUrl', 'http://localhost:13108/api/employee/');
 app.constant('statesUrl', 'http://localhost:13108/api/states/');
 app.constant('genderUrl', 'http://localhost:13108/api/gender/');
-app.constant('degreesUrl', 'http://localhost:13108/api/eductions/');
+app.constant('degreeUrl', 'http://localhost:13108/api/eductions/');
 
 app.factory('generalService', ['$http', 'statesUrl', 'genderUrl', 'degreeUrl', function ($http, statesUrl, genderUrl, degreeUrl) {
 
